@@ -941,22 +941,28 @@ public class BuildGeneralKBIndex {
 
     private static void indexOntologyElement(IndexWriter writer, OntologyElementToken e, Collection<String> domainOf, Collection<String> rangeOf, Collection<String> extendedDomain) throws Exception {
         Document doc = new Document();
-        doc.add(new Field("label", e.getLabel(), TextField.TYPE_NOT_STORED));
-        doc.add(new IntField("id", e.getId(), IntField.TYPE_STORED));
-        doc.add(new Field("type", e.getType(), StringField.TYPE_NOT_STORED));
+        //doc.add(new Field("label", e.getLabel(), TextField.TYPE_NOT_STORED));
+        //doc.add(new IntField("id", e.getId(), IntField.TYPE_STORED));
+        //doc.add(new Field("type", e.getType(), StringField.TYPE_NOT_STORED));
+        doc.add(new TextField("label", e.getLabel(), Field.Store.YES));
+        doc.add(new IntField("id", e.getId(), Field.Store.YES));
+        doc.add(new StringField("type", e.getType(), Field.Store.YES));
         if (domainOf != null) {
             for (String d : domainOf) { //the first element is the URI
-                doc.add(new Field("domainOfProperty", d, StringField.TYPE_NOT_STORED));
+                //doc.add(new Field("domainOfProperty", d, StringField.TYPE_NOT_STORED));
+                doc.add(new StringField("domainOfProperty", d , Field.Store.YES));
             }
         }
         if (rangeOf != null) {
             for (String r : rangeOf) { //the first element is the URI
-                doc.add(new Field("rangeOfProperty", r, StringField.TYPE_NOT_STORED));
+                //doc.add(new Field("rangeOfProperty", r, StringField.TYPE_NOT_STORED));
+                doc.add(new StringField("rangeOfProperty", r, Field.Store.YES));
             }
         }
         if (extendedDomain != null) {
             for (String d : extendedDomain) { //the first element is the URI
-                doc.add(new Field("propertyDomain", d, StringField.TYPE_NOT_STORED));
+                // doc.add(new Field("propertyDomain", d, StringField.TYPE_NOT_STORED));
+                doc.add(new StringField("propertyDomain", d, Field.Store.YES));
             }
         }
         writer.addDocument(doc);
