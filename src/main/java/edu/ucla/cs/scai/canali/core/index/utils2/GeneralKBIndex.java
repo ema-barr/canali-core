@@ -471,6 +471,9 @@ public class GeneralKBIndex {
             out.println("http://www.w3.org/2001/XMLSchema#nonNegativeInteger\tDouble");
             out.println("http://www.w3.org/2001/XMLSchema#positiveInteger\tDouble");
             out.println("http://www.w3.org/2001/XMLSchema#string\tString");
+            out.println("http://www.w3.org/2001/XMLSchema#decimal\tDouble");
+            out.println("http://www.w3.org/2001/XMLSchema#hexBinary\tString");
+
         }
     }
 }
