@@ -55,12 +55,12 @@ public class GeneralKBIndex {
         try (BufferedReader in = new BufferedReader(new FileReader(sourceFile))) {
             String l;
             ln++;
-            String regexType = "(\\s)*<([^<>]*)>(\\s)+<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>(\\s)+<([^<>]*)>(\\s)+\\.(.*)$";
+            String regexType = "(\\s)*<([^<>]*)>(\\s)+<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>(\\s)+<([^<>]*)>(\\s)+\\.";
             String regexLabel = "(\\s)*<([^<>]*)>(\\s)+<http://www.w3.org/2000/01/rdf-schema#label>(\\s)+\"(.*)\"(\\s)+\\.(.*)$";
-            String regexSubclassOf = "(\\s)*<([^<>]*)>(\\s)+<http://www.w3.org/2000/01/rdf-schema#subClassOf>(\\s)+<([^<>]*)>(\\s)+\\.(.*)$";
-            String regexOtherObjectValue = "(\\s)*<([^<>]*)>(\\s)+<([^<>]*)>(\\s)+<([^<>]*)>(\\s)+\\.(.*)$";
-            String regexOtherLiteralValueNoDataType = "(\\s)*<([^<>]*)>(\\s)+<([^<>]*)>(\\s)+\"(.*)\"(\\s)+\\.(.*)$";
-            String regexOtherLiteralValueDataType = "(\\s)*<([^<>]*)>(\\s)+<([^<>]*)>(\\s)+(\"(.*)\"\\^\\^<([^<>]*)>)(\\s)+\\.(.*)$";
+            String regexSubclassOf = "(\\s)*<([^<>]*)>(\\s)+<http://www.w3.org/2000/01/rdf-schema#subClassOf>(\\s)+<([^<>]*)>(\\s)+\\.";
+            String regexOtherObjectValue = "(\\s)*<([^<>]*)>(\\s)+<([^<>]*)>(\\s)+<([^<>]*)>(\\s)+\\.";
+            String regexOtherLiteralValueNoDataType = "(\\s)*<([^<>]*)>(\\s)+<([^<>]*)>(\\s)+\"(.*)\"(\\s)+\\.";
+            String regexOtherLiteralValueDataType = "(\\s)*<([^<>]*)>(\\s)+<([^<>]*)>(\\s)+(\"(.*)\"\\^\\^<([^<>]*)>)(\\s)+\\.";
             Pattern pt = Pattern.compile(regexType);
             Pattern pl = Pattern.compile(regexLabel);
             Pattern ps = Pattern.compile(regexSubclassOf);
