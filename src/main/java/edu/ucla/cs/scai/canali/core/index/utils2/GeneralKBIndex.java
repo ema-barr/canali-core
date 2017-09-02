@@ -55,12 +55,12 @@ public class GeneralKBIndex {
         try (BufferedReader in = new BufferedReader(new FileReader(sourceFile))) {
             String l;
             ln++;
-            String regexType = "(\\s|\\t)*<([^<>]*)>(\\s|\\t)+<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>(\\s|\\t)+<([^<>]*)>(\\s|\\t)+\\.(.*)$";
-            String regexLabel = "(\\s|\\t)*<([^<>]*)>(\\s|\\t)+<http://www.w3.org/2000/01/rdf-schema#label>(\\s|\\t)+\"(.*)\"(\\s|\\t)+\\.(.*)$";
-            String regexSubclassOf = "(\\s|\\t)*<([^<>]*)>(\\s|\\t)+<http://www.w3.org/2000/01/rdf-schema#subClassOf>(\\s|\\t)+<([^<>]*)>(\\s|\\t)+\\.(.*)$";
-            String regexOtherObjectValue = "(\\s|\\t)*<([^<>]*)>(\\s|\\t)+<([^<>]*)>(\\s|\\t)+<([^<>]*)>(\\s|\\t)+\\.(.*)$";
-            String regexOtherLiteralValueNoDataType = "(\\s|\\t)*<([^<>]*)>(\\s|\\t)+<([^<>]*)>(\\s|\\t)+\"(.*)\"(\\s|\\t)+\\.(.*)$";
-            String regexOtherLiteralValueDataType = "(\\s|\\t)*<([^<>]*)>(\\s|\\t)+<([^<>]*)>(\\s|\\t)+(\"(.*)\"\\^\\^<([^<>]*)>)(\\s|\\t)+\\.(.*)$";
+            String regexType = "(\\s)*<([^<>]*)>(\\s)+<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>(\\s)+<([^<>]*)>(\\s)+\\.(.*)$";
+            String regexLabel = "(\\s)*<([^<>]*)>(\\s)+<http://www.w3.org/2000/01/rdf-schema#label>(\\s)+\"(.*)\"(\\s)+\\.(.*)$";
+            String regexSubclassOf = "(\\s)*<([^<>]*)>(\\s)+<http://www.w3.org/2000/01/rdf-schema#subClassOf>(\\s)+<([^<>]*)>(\\s)+\\.(.*)$";
+            String regexOtherObjectValue = "(\\s)*<([^<>]*)>(\\s)+<([^<>]*)>(\\s)+<([^<>]*)>(\\s)+\\.(.*)$";
+            String regexOtherLiteralValueNoDataType = "(\\s)*<([^<>]*)>(\\s)+<([^<>]*)>(\\s)+\"(.*)\"(\\s)+\\.(.*)$";
+            String regexOtherLiteralValueDataType = "(\\s)*<([^<>]*)>(\\s)+<([^<>]*)>(\\s)+(\"(.*)\"\\^\\^<([^<>]*)>)(\\s)+\\.(.*)$";
             Pattern pt = Pattern.compile(regexType);
             Pattern pl = Pattern.compile(regexLabel);
             Pattern ps = Pattern.compile(regexSubclassOf);
@@ -432,8 +432,8 @@ public class GeneralKBIndex {
             pathInput = args[0];
             pathOutput = args[1];
         } else {
-            pathInput = "/home/massimo/canalikbs/movie/source/triples.nt/";
-            pathOutput = "/home/massimo/canalikbs/movie/processed/";
+            pathInput = "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\KB\\source\\dump.nt";
+            pathOutput = "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\KB\\output\\";
         }
         long start = System.currentTimeMillis();
         System.out.println("Started at " + new Date());
