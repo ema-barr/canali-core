@@ -106,6 +106,8 @@ public class GeneralKBIndex {
         }
     }
 
+    //All'interno della lista dei tipi distingue tra classi e proprietà
+    //IMPORTANTE: ogni qual volta che è identificata una nuova riga e indicizzata, tale riga viene rimossa dalla lista
     public void loadClassesAndProperties() {
         classIds = new HashMap<>();
         propertyIds = new HashMap<>();
@@ -117,7 +119,9 @@ public class GeneralKBIndex {
                 } else {
                     propertyIds.put(l[0], propertyIds.size() + 1);
                 }
+                System.out.println (typeLines.size());
                 it.remove();
+                System.out.println (typeLines.size());
             } else if (l[1].equals("http://www.w3.org/2000/01/rdf-schema#Class")) {
                 if (classIds.containsKey(l[0])) {
                     System.out.println("Class " + l[0] + " defined more than once");
@@ -127,6 +131,7 @@ public class GeneralKBIndex {
                 it.remove();
             }
         }
+        System.out.println (typeLines.size());
         classById = new String[classIds.size() + 1];
         classIds.entrySet().stream().forEach((e) -> {
             classById[e.getValue()] = e.getKey();
@@ -138,6 +143,8 @@ public class GeneralKBIndex {
         });
     }
 
+    //All'interno della lista delle sottoclassi identifica le sottoclassi
+    //IMPORTANTE: ogni qual volta che è identificata una nuova riga e indicizzata, tale riga viene rimossa dalla lista
     public void createClassParentsFile() throws IOException {
         try (
                 PrintWriter out = new PrintWriter(new FileOutputStream(destinationPath + "class_parents"))) {
@@ -160,6 +167,7 @@ public class GeneralKBIndex {
         }
     }
 
+    //Cerca le entità ll'interno di tutte le liste tranne in quella delle sottoclassi, in quanto non contiene alcuna informazione sulle entità
     public void loadEntities() {
         entityIds = new HashMap<>();
         for (Iterator<String> it = typeLines.iterator(); it.hasNext();) {
@@ -209,6 +217,9 @@ public class GeneralKBIndex {
         return null;
     }
 
+    //Cerca le label all'interno della lista della label e le distingue tra lebel di classe, proprietà ed entità.
+    //Nel caso in cui esistano classi, proprietà o entità senza label, il sistema cerca di crearne una a partire dal suo URI
+    // IMPORTANTE: ogni qual volta che è identificata una nuova riga e indicizzata, tale riga viene rimossa dalla lista
     public void loadLabels() {
         classLabels = new HashSet[classById.length];
         for (int i = 1; i < classLabels.length; i++) {
@@ -274,6 +285,8 @@ public class GeneralKBIndex {
         }
     }
 
+    // Cerca le associazioni entità-classe all'interno della lista dei tipi.
+    // IMPORTANTE: ogni qual volta che è identificata una nuova riga e indicizzata, tale riga viene rimossa dalla lista
     public void loadEntityClasses() {
         entityClasses = new HashSet[entityById.length];
         for (int i = 1; i < entityClasses.length; i++) {
@@ -294,6 +307,8 @@ public class GeneralKBIndex {
         }
     }
 
+    // Cerca le triple soggetto, proprietà, valore all'interno della lista otherLinesObjectValue e otherLinesLiteralValue, verificando la validità delle tre componenti
+    // IMPORTANTE: ogni qual volta che è identificata una nuova riga e indicizzata, tale riga viene rimossa dalla lista
     public void loadTriples() {
         triplesObjectValue = new HashMap<>();
         triplesLiteralValue = new HashMap<>();
