@@ -304,7 +304,7 @@ public class BuildGeneralKBIndex {
         propertyCount = new int[propertyIdFromUri.size() + 1];
     }
 
-    private void processePropertyLabelsFile(String fileName) throws Exception {
+    private void processPropertyLabelsFile(String fileName) throws Exception {
         try (BufferedReader in = new BufferedReader(new FileReader(basePathInput + fileName))) {
             String l = in.readLine();
             while (l != null) {
@@ -346,7 +346,7 @@ public class BuildGeneralKBIndex {
 
     private void loadPropertyLabels() throws Exception {
         System.out.println("Loading property labels");
-        processePropertyLabelsFile("property_labels"); //qui
+        processPropertyLabelsFile("property_labels"); //qui
 
         for (int i = 1; i < propertyLabels.length; i++) {
             if (propertyLabels[i] != null) {
