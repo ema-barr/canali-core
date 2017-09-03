@@ -119,9 +119,7 @@ public class GeneralKBIndex {
                 } else {
                     propertyIds.put(l[0], propertyIds.size() + 1);
                 }
-                System.out.println (typeLines.size());
                 it.remove();
-                System.out.println (typeLines.size());
             } else if (l[1].equals("http://www.w3.org/2000/01/rdf-schema#Class")) {
                 if (classIds.containsKey(l[0])) {
                     System.out.println("Class " + l[0] + " defined more than once");
@@ -131,7 +129,6 @@ public class GeneralKBIndex {
                 it.remove();
             }
         }
-        System.out.println (typeLines.size());
         classById = new String[classIds.size() + 1];
         classIds.entrySet().stream().forEach((e) -> {
             classById[e.getValue()] = e.getKey();
