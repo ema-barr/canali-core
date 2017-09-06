@@ -51,36 +51,6 @@ public class TranslationService {
         }
     }
 
-
-    /* Ho aggiunto io ma penso che sia in più
-    static {
-        prefixes.put("general", "http://localhost:2020/");
-        prefixes.put("payment", "http://localhost:2020/payment/");
-        prefixes.put("vocab", "http://localhost:2020/vocab/");
-        prefixes.put("staff", "http://localhost:2020/staff/");
-        prefixes.put("rental", "http://localhost:2020/rental/");
-        prefixes.put("customer", "http://localhost:2020/customer/");
-        prefixes.put("film_actor", "http://localhost:2020/film_actor/");
-        prefixes.put("film_category", "http://localhost:2020/film_category/");
-        prefixes.put("address", "http://localhost:2020/address/");
-        prefixes.put("inventory", "http://localhost:2020/inventory/");
-        prefixes.put("country", "http://localhost:2020/country/");
-        prefixes.put("language", "http://localhost:2020/language/");
-        prefixes.put("film", "http://localhost:2020/film/");
-        prefixes.put("city", "http://localhost:2020/city/");
-
-
-        prefixes.put("xsd:", "http://www.w3.org/2001/XMLSchema#");
-        prefixes.put("rdfs:", "http://www.w3.org/2000/01/rdf-schema#");
-        prefixes.put("foaf:", "http://xmlns.com/foaf/0.1/");
-        prefixes.put("rdf:", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
-
-        for (Map.Entry<String, String> e : prefixes.entrySet()) {
-            inversePrefixes.put(e.getValue(), e.getKey());
-        }
-
-    }*/
-
     public TranslationWrapper translateQuery(ArrayList<AutocompleteObject> states, String endpoint, int limit, boolean disableSubclass) throws Exception {
         if (states.isEmpty()) {
             throw new Exception("Empty sequence of states");
