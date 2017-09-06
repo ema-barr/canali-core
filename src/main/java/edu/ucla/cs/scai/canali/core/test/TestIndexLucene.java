@@ -18,7 +18,9 @@ public class TestIndexLucene {
 		
 		BufferedWriter writer = new BufferedWriter(new FileWriter("index.txt"));
 
-		String indexPath = "/home/gaetangate/Dev/nlp2sparql-data/dbpedia-processed/2015-10/index_onlydbo/lucene";
+		//String indexPath = "/home/gaetangate/Dev/nlp2sparql-data/dbpedia-processed/2015-10/index_onlydbo/lucene";
+
+		String indexPath = "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\kb-processed\\index\\lucene";
 
 		Directory directory = new RAMDirectory();
 		FSDirectory tempDirectory;

@@ -114,10 +114,10 @@ public class TestCanali {
 
 	@SuppressWarnings("empty-statement")
 	public static void main(String... args) throws Exception {
-		System.setProperty("kb.index.dir", "/home/gaetangate/Dev/nlp2sparql-data/dbpedia-processed/2015-10/index_onlydbo/");
+		System.setProperty("kb.index.dir", "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\kb-processed\\index\\");
 		System.out.println("Start");
 
-		String query = "Who are the crew members of Apollo 11?"; //q
+		String query = "What is city #246?"; //q
 		String lastAcceptedProperty = null; //p
 		String[] openVariablesUri = null; //ou //!!!
 		Integer[] openVariablesPosition = null; //op  //!!!
