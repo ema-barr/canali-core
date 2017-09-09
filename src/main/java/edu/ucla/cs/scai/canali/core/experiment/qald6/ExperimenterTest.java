@@ -11,9 +11,9 @@ public class ExperimenterTest {
 
 	public static void main(String[] args) throws Exception {
 
-		QASystem qas = new CanaliW2VQASystem("C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\w2v\\abstract_200_20.w2v.bin", "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\kb-processed\\supportFiles\\property_labels");
+		QASystem qas = new CanaliW2VQASystemD2RQ("/Users/Manu/Desktop/Semeraro/w2v/abstract_200_20.w2v.bin", "/Users/Manu/Desktop/Semeraro/kb-processed/supportFiles/property_labels");
 		//System.setProperty("kb.index.dir", "/home/lucia/nlp2sparql-data/dbpedia-processed/2015-10/dbpedia-processed_onlydbo_mini_e/index/"); //!!!
-		System.setProperty("kb.index.dir", "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\kb-processed\\index\\");
+		System.setProperty("kb.index.dir", "/Users/Manu/Desktop/Semeraro/kb-processed/index");
 
 		System.setProperty("sparql.endpoint", "http://localhost:2020/sparql");
 
@@ -28,6 +28,11 @@ public class ExperimenterTest {
 		//String query = "Is there a award of Aki Kaurismäki equal to Grand Prix (Cannes Film Festival) ?";
 		
 		String query = "What is the payment rental id of payment #17503?";
+		//String query = "What is the city #127?";
+		//String query = "What is the city country id of city #127?";
+		//String query ="What is the film category film id of film #1?";
+
+
 		//String query = "What are the award of Alain Connes?";
 		
 		//String query = "What is the location city of Heineken International?";

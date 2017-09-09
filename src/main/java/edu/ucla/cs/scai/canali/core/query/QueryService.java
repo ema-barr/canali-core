@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.jena.graph.Triple;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
@@ -98,6 +100,9 @@ public class QueryService {
                     Query query = QueryFactory.create(tw.getQuery(), Syntax.syntaxSPARQL_11);
                     //QueryExecution qexec = new QueryEngineHTTP(tw.getEndPoint(), query);
                     QueryExecution qexec = QueryExecutionFactory.sparqlService(tw.getEndPoint(), query);
+
+                    qexec.setTimeout(10, TimeUnit.MINUTES);
+
                     ResultSet rs = qexec.execSelect();
                     for (; rs.hasNext();) {
                         QuerySolution qs = rs.next();
