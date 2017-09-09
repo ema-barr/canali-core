@@ -9,33 +9,22 @@ import edu.ucla.cs.scai.canali.core.autocompleter.AutocompleteObject;
 import edu.ucla.cs.scai.canali.core.index.TokenIndex;
 import edu.ucla.cs.scai.canali.core.translation.QueryModel;
 import edu.ucla.cs.scai.canali.core.translation.TranslationService;
+import edu.ucla.cs.scai.canali.core.translation.TranslationServiceD2RQ;
 import edu.ucla.cs.scai.canali.core.translation.TranslationWrapper;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.jena.graph.Triple;
-import org.apache.jena.query.Query;
-import org.apache.jena.query.QueryExecution;
-import org.apache.jena.query.QueryExecutionFactory;
-import org.apache.jena.query.QueryFactory;
-import org.apache.jena.query.QuerySolution;
-import org.apache.jena.query.ResultSet;
-import org.apache.jena.query.Syntax;
+import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.StmtIterator;
-import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
 import org.apache.jena.system.JenaSystem;
+
+import java.util.*;
 
 /**
  *
  * @author Giuseppe M. Mazzeo <mazzeo@cs.ucla.edu>
  */
-public class QueryService {
+public class QueryServiceD2RQ {
 
     public static final String DEFAULT_END_POINT;
 
@@ -45,13 +34,13 @@ public class QueryService {
     int typeCounter = 0;
 
     static {
-        prefixes.put("xsd:", "http://www.w3.org/2001/XMLSchema#");
-        prefixes.put("rdfs:", "http://www.w3.org/2000/01/rdf-schema#");
-        prefixes.put("foaf:", "http://xmlns.com/foaf/0.1/");
         prefixes.put("rdf:", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
-        //prefixes.put("dbpedia:", "http://dbpedia.org/resource/");
-        prefixes.put("dbpedia-owl:", "http://dbpedia.org/ontology/");
-        prefixes.put("dbpprop:", "http://dbpedia.org/property/");
+        prefixes.put("owl:", "http://www.w3.org/2002/07/owl#");
+        prefixes.put("xsd:", "http://www.w3.org/2001/XMLSchema#");
+        prefixes.put("vocab:", "http://localhost:2020/vocab/");
+        prefixes.put("rdfs:", "http://www.w3.org/2000/01/rdf-schema#");
+        prefixes.put("map:", "http://localhost:2020/resource/#");
+
         for (Map.Entry<String, String> e : prefixes.entrySet()) {
             inversePrefixes.put(e.getValue(), e.getKey());
         }
@@ -71,7 +60,7 @@ public class QueryService {
         if (states.isEmpty()) {
             throw new Exception("Empty sequence of states");
         }
-        TranslationService ts = new TranslationService();
+        TranslationServiceD2RQ ts = new TranslationServiceD2RQ();
         TranslationWrapper tw = ts.translateQuery(states, endpoint, limit, disableSubclass);
         ResultWrapper res = executeSparql(tw);
         return res;

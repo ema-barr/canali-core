@@ -40,7 +40,7 @@ public class TranslationServiceD2RQ {
         prefixes.put("rdf:", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
         prefixes.put("owl:", "http://www.w3.org/2002/07/owl#");
         prefixes.put("xsd:", "http://www.w3.org/2001/XMLSchema#");
-        prefixes.put("vocab:", "http://localhost:2020/vocab/");
+        prefixes.put("vocab:", "http://localhost:2020/resource/vocab/");
         prefixes.put("rdfs:", "http://www.w3.org/2000/01/rdf-schema#");
         prefixes.put("map:", "http://localhost:2020/resource/#");
 
@@ -114,7 +114,9 @@ public class TranslationServiceD2RQ {
 
                 qm = new QueryModel(subjectVar, variableNameStack.getLast(), states.get(stateIndex[0] + 1).restrictedText, QueryModel.VALUE_TYPE, aggregateFunction);
                 String aUri = states.get(stateIndex[0] + 1).labels;
-
+                //TODO controllare se serve veramente
+                // cambio il nome della proprietà
+                aUri = "vocab:" + aUri.split("vocab/")[1];
                 //the introduced variable is bound to the variable at the top of the stack through the accepted property
                 qm.getConstraints().add(new QueryConstraint(subjectVar, aUri, variableNameStack.getLast()));
                 stateIndex[0]++;
@@ -959,7 +961,7 @@ public class TranslationServiceD2RQ {
             } else if (qm.aggregateFunction == QueryModel.COUNT) {
                 StringBuilder sb2 = null;
                 if (qm.getValueVariable() != null) {
-                    sb.append("SELECT (COUNT(DISTINCT ?").append(qm.getValueVariable()).append(") AS ?count").append(qm.getValueVariable()).append(") ?").append(qm.getEntityVariable()).append(" ?elabel ?eurl ");
+                    sb.append("SELECT (COUNT(DISTINCT ?").append(qm.getValueVariable()).append(") AS ?count").append(qm.getValueVariable()).append(") ?").append(qm.getEntityVariable()).append(" ?elabel ");
                     sb2 = getNewQueryStringBuilder(); //compute also the count without aggregation
                     sb2.append("SELECT (COUNT(DISTINCT ?").append(qm.getValueVariable()).append(") AS ?count").append(qm.getValueVariable()).append(") ");
                 } else {
@@ -985,7 +987,7 @@ public class TranslationServiceD2RQ {
                 }
                 sb.append("}\n");
                 if (qm.getValueVariable() != null) {
-                    sb.append("GROUP BY ?").append(qm.getEntityVariable()).append(" ?elabel ?eurl \n");
+                    sb.append("GROUP BY ?").append(qm.getEntityVariable()).append(" ?elabel \n");
                 }
                 extendWithOrderByAndLimt(qm, sb, limit);
                 queryString = sb.toString();

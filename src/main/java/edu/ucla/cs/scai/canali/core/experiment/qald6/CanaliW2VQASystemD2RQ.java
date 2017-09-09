@@ -10,6 +10,7 @@ import edu.ucla.cs.scai.canali.core.autocompleter.AutocompleteObject;
 import edu.ucla.cs.scai.canali.core.autocompleter.AutocompleteService;
 import edu.ucla.cs.scai.canali.core.autocompleter.AutocompleteW2VService;
 import edu.ucla.cs.scai.canali.core.query.QueryService;
+import edu.ucla.cs.scai.canali.core.query.QueryServiceD2RQ;
 import edu.ucla.cs.scai.canali.core.query.ResultObject;
 import edu.ucla.cs.scai.canali.core.query.ResultWrapper;
 import edu.ucla.cs.scai.canali.core.translation.TranslationService;
@@ -368,7 +369,7 @@ public class CanaliW2VQASystemD2RQ implements QASystem {
 				TranslationWrapper tWrapper = new TranslationServiceD2RQ().translateQuery(acceptedTokens, endpoint, limit, disableSubclass);
 				System.out.println(tWrapper.getQuery());
 
-				ResultWrapper rWrapper = new QueryService().answerQuery(acceptedTokens, endpoint, limit, disableSubclass);
+				ResultWrapper rWrapper = new QueryServiceD2RQ().answerQuery(acceptedTokens, endpoint, limit, disableSubclass);
 				//System.out.println("+++rWrapper query = \n"+ rWrapper.);
 				ArrayList<ResultObject> results = rWrapper.getResults();
 				if (results != null && results.size() > 0) {

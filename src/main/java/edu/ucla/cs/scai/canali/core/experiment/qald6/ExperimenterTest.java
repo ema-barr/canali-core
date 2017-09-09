@@ -27,10 +27,14 @@ public class ExperimenterTest {
 		//String query = "What is the prize of Alain Connes?";
 		//String query = "Is there a award of Aki Kaurismäki equal to Grand Prix (Cannes Film Festival) ?";
 		
-		String query = "What is the payment rental id of payment #17503?";
+		//String query = "What is the payment rental id of payment #17503?";
 		//String query = "What is the city #127?";
 		//String query = "What is the city country id of city #127?";
-		//String query ="What is the film category film id of film #1?";
+		//String query ="What is the film_actor actor id of film_actor #27/398?";
+		//String query = "What is the actor first_name of actor #27?";
+
+		//String query = "What is the count of city #127?";
+		String query = "What is the count of film actor actor_id [inverted] of actor #27?";
 
 
 		//String query = "What are the award of Alain Connes?";
