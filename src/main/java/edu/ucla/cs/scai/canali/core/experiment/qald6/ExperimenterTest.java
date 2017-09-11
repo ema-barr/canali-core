@@ -34,7 +34,9 @@ public class ExperimenterTest {
 		//String query = "What is the actor first_name of actor #27?";
 
 		//String query = "What is the count of city #127?";
-		String query = "What is the count of film actor actor_id [inverted] of actor #27?";
+		//String query = "What is the count of film actor actor_id [inverted] of actor #27?";
+		//String query = "What is the count of payment rental id ?";
+		String query = "What is the rental last update of rental #1?";
 
 
 		//String query = "What are the award of Alain Connes?";

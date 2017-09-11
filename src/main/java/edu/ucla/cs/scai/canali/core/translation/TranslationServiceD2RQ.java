@@ -1011,7 +1011,8 @@ public class TranslationServiceD2RQ {
                     extendWithOrderByAndLimt(qm, sb2, limit);
                     String queryString2 = sb2.toString();
                     //queryString2=replaceBindings(queryString2, qm);
-                    queryString += "\n\n" + queryString2;
+                    //Rimossa la seguente riga per evitare che esegua due query. In tal caso darebbe errore
+                    // queryString += "\n\n" + queryString2;
                     return new TranslationWrapper(queryString, endpoint, false, QueryModel.COUNT, qm.getValueVariable(), qm.getEntityVariable(), qm.sortingVariable, qm.getPopertyText(), qm.sortingPopertyText, queryString2);
                 } else {
                     return new TranslationWrapper(queryString, endpoint, false, QueryModel.COUNT, qm.getValueVariable(), qm.getEntityVariable(), qm.sortingVariable, qm.getPopertyText(), qm.sortingPopertyText);
