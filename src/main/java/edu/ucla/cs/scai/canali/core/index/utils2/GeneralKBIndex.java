@@ -200,7 +200,9 @@ public class GeneralKBIndex {
         }
         entityById = new String[entityIds.size() + 1];
         entityIds.entrySet().stream().forEach((e) -> {
-            entityById[e.getValue()] = e.getKey();
+            //istruzione necessaria perchè il dump di d2rq usa un nome differente da quello usato dal server per le entità
+            String value = "http://localhost:2020/resource/" + e.getKey().split(":2020/")[1];
+            entityById[e.getValue()] = value;
         });
     }
 
@@ -444,8 +446,8 @@ public class GeneralKBIndex {
             pathInput = args[0];
             pathOutput = args[1];
         } else {
-            pathInput = "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\KB\\source\\dump.nt";
-            pathOutput = "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\KB\\output\\";
+            pathInput = "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\mydb\\source\\mydb.nt";
+            pathOutput = "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\mydb\\output\\";
         }
         long start = System.currentTimeMillis();
         System.out.println("Started at " + new Date());
