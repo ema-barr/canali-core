@@ -200,9 +200,9 @@ public class GeneralKBIndex {
         }
         entityById = new String[entityIds.size() + 1];
         entityIds.entrySet().stream().forEach((e) -> {
-            //istruzione necessaria perchè il dump di d2rq usa un nome differente da quello usato dal server per le entità
+            //istruzione necessaria perchè d2rq genera gli URI relativi in base a http://localhost:2020/resource/
             String value = "http://localhost:2020/resource/" + e.getKey().split(":2020/")[1];
-            entityById[e.getValue()] = value;
+            entityById[e.getValue()] = e.getKey();
         });
     }
 
@@ -446,8 +446,8 @@ public class GeneralKBIndex {
             pathInput = args[0];
             pathOutput = args[1];
         } else {
-            pathInput = "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\mydb\\source\\mydb.nt";
-            pathOutput = "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\mydb\\output\\";
+            pathInput = "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\dvd\\source\\dvdrental.nt";
+            pathOutput = "C:\\Users\\MANU\\Desktop\\Universita\\Semeraro\\dvd\\output\\";
         }
         long start = System.currentTimeMillis();
         System.out.println("Started at " + new Date());
