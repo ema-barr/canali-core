@@ -124,6 +124,7 @@ public class GeneralKBIndex {
                 if (classIds.containsKey(l[0])) {
                     System.out.println("Class " + l[0] + " defined more than once");
                 } else {
+
                     classIds.put(l[0], classIds.size() + 1);
                 }
                 it.remove();
@@ -131,12 +132,26 @@ public class GeneralKBIndex {
         }
         classById = new String[classIds.size() + 1];
         classIds.entrySet().stream().forEach((e) -> {
-            classById[e.getValue()] = e.getKey();
+            //istruzioni necessarie perchè d2rq genera gli URI relativi in base a http://localhost:2020/resource/
+            String value;
+            if (e.getKey().contains("vocab")){
+                value = "http://localhost:2020/resource/" + e.getKey().split(":2020/")[1];
+            } else {
+                value = e.getKey();
+            }
+            classById[e.getValue()] = value;
         });
         propertyById = new String[propertyIds.size() + 1];
 
         propertyIds.entrySet().stream().forEach((e) -> {
-            propertyById[e.getValue()] = e.getKey();
+            //istruzioni necessarie perchè d2rq genera gli URI relativi in base a http://localhost:2020/resource/
+            String value;
+            if (e.getKey().contains("vocab")){
+                value = "http://localhost:2020/resource/" + e.getKey().split(":2020/")[1];
+            } else {
+                value = e.getKey();
+            }
+            propertyById[e.getValue()] = value;
         });
     }
 

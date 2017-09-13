@@ -29,15 +29,24 @@ public class ExperimenterTest {
 		//------------------------------------------
         //dvd
 		//String query = "What is the payment rental id of payment #17503?";
-		//String query = "What is the city #127?";
+		//String query = "What is the release year of Arizona Bang?";
 		//String query = "What is the city country id of city #127?";
 		//String query ="What is the film_actor actor id of film_actor #27/398?";
 		//String query = "What is the actor first_name of actor #27?";
 
 		//String query = "What is the count of city #127?";
-		String query = "What is the count of film actor actor_id [inverted] of actor #27?";
+		//String query = "What is the count of film actor actor_id [inverted] of actor #27?";
 		//String query = "What is the count of payment rental id ?";
 		//String query = "What is the rental last update of rental #1?";
+
+		//---- nuove query
+		//String query = "What is the release year of Arizona Bang?";
+		//String query = "Who is Adam Grant?";
+		String query = "What is the city country id of Abha?";
+		//String query = "What is the actor last update of Al Garland?";
+		//String query = "What is the count of actor?";
+		//String query = "What is the film actor actor_id [inverted] of Adam Grant?";
+		//String query = "What is the count of film actor actor_id [inverted] of Adam Grant?";
 
 
         //mydb_simple

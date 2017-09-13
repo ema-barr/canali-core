@@ -114,9 +114,7 @@ public class TranslationServiceD2RQ {
 
                 qm = new QueryModel(subjectVar, variableNameStack.getLast(), states.get(stateIndex[0] + 1).restrictedText, QueryModel.VALUE_TYPE, aggregateFunction);
                 String aUri = states.get(stateIndex[0] + 1).labels;
-                //TODO controllare se serve veramente
-                // cambio il nome della proprietà
-                aUri = "vocab:" + aUri.split("vocab/")[1];
+
                 //the introduced variable is bound to the variable at the top of the stack through the accepted property
                 qm.getConstraints().add(new QueryConstraint(subjectVar, aUri, variableNameStack.getLast()));
                 stateIndex[0]++;
