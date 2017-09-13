@@ -202,7 +202,7 @@ public class GeneralKBIndex {
         entityIds.entrySet().stream().forEach((e) -> {
             //istruzione necessaria perchè d2rq genera gli URI relativi in base a http://localhost:2020/resource/
             String value = "http://localhost:2020/resource/" + e.getKey().split(":2020/")[1];
-            entityById[e.getValue()] = e.getKey();
+            entityById[e.getValue()] = value;
         });
     }
 
