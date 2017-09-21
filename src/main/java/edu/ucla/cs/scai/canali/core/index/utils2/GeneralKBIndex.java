@@ -231,7 +231,7 @@ public class GeneralKBIndex {
         return null;
     }
 
-    //Cerca le label all'interno della lista della label e le distingue tra lebel di classe, proprietà ed entità.
+    //Cerca le label all'interno della lista della label e le distingue tra label di classe, proprietà ed entità.
     //Nel caso in cui esistano classi, proprietà o entità senza label, il sistema cerca di crearne una a partire dal suo URI
     // IMPORTANTE: ogni qual volta che è identificata una nuova riga e indicizzata, tale riga viene rimossa dalla lista
     public void loadLabels() {

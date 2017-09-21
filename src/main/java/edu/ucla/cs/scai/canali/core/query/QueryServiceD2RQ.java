@@ -22,7 +22,7 @@ import java.util.*;
 
 /**
  *
- * @author Giuseppe M. Mazzeo <mazzeo@cs.ucla.edu>
+ * @author Emanuele Pio Barracchia
  */
 public class QueryServiceD2RQ {
 
